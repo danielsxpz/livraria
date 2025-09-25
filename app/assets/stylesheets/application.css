@@ -8,3 +8,327 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+#header {
+  background-color: #ca3b3a;
+  padding: 30px 0;
+}
+
+#footer {
+  background-color: #ccc;
+  padding: 30px 0;
+}
+
+#main {
+  padding: 30px 0;
+  min-height: 450px;
+}
+
+#top-search {
+  padding-top: 10px;
+
+  input {
+    width: 350px;
+  }
+}
+
+#categories {
+  background-color: #000;
+
+  a {
+    color: #fff;
+    border-radius: 0;
+  }
+  a:hover {
+    background-color: #444;
+  }
+  .active a {
+    background-color: #f0ad4e;
+  }
+}
+/* Variáveis para fácil personalização */
+:root {
+    --primary-color: #3498db;  /* Azul Principal */
+    --secondary-color: #f4f4f9; /* Cor de Fundo */
+    --text-color: #333;
+    --hover-color: #2980b9; /* Azul mais escuro no hover */
+    --border-color: #ddd;
+    --breakpoint-md: 768px;
+}
+
+.navbar {
+    display: flex;
+    /* Alinha logo à esquerda e links à direita */
+    justify-content: space-between; 
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--secondary-color);
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Esconde o botão de menu em telas grandes */
+.navbar-toggler {
+    display: none;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar-logo:hover {
+    color: var(--hover-color);
+}
+
+/* Estilo da lista de links */
+.navbar-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-item {
+    margin-left: 1.5rem;
+}
+
+.navbar-link {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    font-weight: 500;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.navbar-link:hover,
+.navbar-link.active { /* Estilo para o link ativo */
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Variáveis para personalização */
+:root {
+    --card-bg: #ffffff;
+    --primary-text: #2c3e50;
+    --secondary-text: #7f8c8d;
+    --highlight-color: #3498db;
+    --available-color: #27ae60;
+    --borrowed-color: #e74c3c;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------------------------------------------- */
+/* 1. Layout de Grade com Flexbox (Sem Bootstrap) */
+/* ---------------------------------------------------- */
+
+#books {
+    padding: 20px 0; /* Ajustado para melhor espaçamento horizontal */
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* O elemento .row agora usa Flexbox */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    /* Ajuste de margem negativa para compensar a margem de 5px dos books */
+    margin-left: -5px; 
+    margin-right: -5px;
+}
+
+/* Define a largura do card (1/6 da linha) e APLICA A MARGEM */
+.book {
+    /* Novo: Adiciona margem de 5px ao redor de cada livro */
+    margin: 5px; 
+    
+    /* Cálculo da Largura: 100% / 6 colunas - (2 * 5px de margem) */
+    flex: 0 0 calc(16.666% - 10px); 
+    max-width: calc(16.666% - 10px);
+    
+    /* Estilização do Card */
+    box-sizing: border-box; 
+    background-color: var(--card-bg);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--shadow-light);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    height: 320px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.book:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------------------------------------------------- */
+/* 2. Estilização dos Elementos do Livro (sem alterações) */
+/* ---------------------------------------------------- */
+
+.book-cover-placeholder {
+    width: 100%;
+    height: 150px;
+    background-color: #ecf0f1;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #bdc3c7;
+}
+
+.titulo {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary-text);
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.2em;
+    height: 2.4em;
+}
+
+.autor {
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.categoria a {
+    font-size: 0.8rem;
+    color: var(--highlight-color);
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 3px 8px;
+    border: 1px solid var(--highlight-color);
+    border-radius: 15px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.categoria a:hover {
+    background-color: var(--highlight-color);
+    color: var(--card-bg);
+}
+
+/* ---------------------------------------------------- */
+/* 3. Estilização do Status (sem alterações) */
+/* ---------------------------------------------------- */
+
+.status {
+    margin-top: auto;
+    padding-top: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-top: 1px dashed #eee;
+}
+
+/* Aplica cor ao status */
+.status:contains('disponivel'),
+.status:contains('Disponível') {
+    color: var(--available-color);
+}
+
+.status:contains('emprestado'),
+.status:contains('Emprestado') {
+    color: var(--borrowed-color);
+}
+
+/* ---------------------------------------------------- */
+/* 4. Responsividade Atualizada (Adapta o cálculo de largura) */
+/* ---------------------------------------------------- */
+
+/* Em tablets (4 livros por linha) */
+@media (max-width: 992px) {
+    .book {
+        /* 100% / 4 colunas - (2 * 5px de margem) */
+        flex: 0 0 calc(25% - 10px); 
+        max-width: calc(25% - 10px);
+    }
+}
+
+/* Em dispositivos móveis (2 livros por linha) */
+@media (max-width: 600px) {
+    .book {
+        /* 100% / 2 colunas - (2 * 5px de margem) */
+        flex: 0 0 calc(50% - 10px); 
+        max-width: calc(50% - 10px);
+        height: 280px; 
+    }
+    .titulo {
+        font-size: 0.9rem;
+    }
+}
+
+/* Variáveis para fácil personalização */
+:root {
+    --footer-bg-color: #34495e;     /* Fundo: Azul Marinho Escuro */
+    --footer-text-color: #ecf0f1;   /* Texto: Cinza Claro */
+    --footer-highlight-color: #ffffff; /* Destaque: Branco */
+    --footer-padding: 25px;         /* Espaçamento interno (altura) */
+    --footer-font-size: 0.95rem;
+}
+
+#footer {
+    /* Aparência */
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    padding: var(--footer-padding) 15px; /* Padding vertical e horizontal */
+    
+    /* Centralização usando Flexbox */
+    display: flex; 
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    flex-wrap: wrap; /* Garante que o texto quebre em telas pequenas */
+
+    /* Estilo da Fonte */
+    font-size: var(--footer-font-size);
+    line-height: 1.5; 
+    width: 100%; /* Garante que ele ocupe toda a largura */
+    text-align: center; /* Fallback para alinhamento */
+}
+
+/* Estiliza o Nome da Biblioteca */
+#footer strong {
+    color: var(--footer-highlight-color);
+    font-weight: 700;
+    /* Espaçamento ao redor do nome */
+    margin: 0 6px; 
+}
+
+/* Estilo para o ponto final e texto dos direitos */
+#footer .copyright-text {
+    margin-left: 5px;
+}
+
+
+/* ---------------------------------------------------- */
+/* Responsividade para Telas Pequenas */
+/* ---------------------------------------------------- */
+@media (max-width: 600px) {
+    #footer {
+        padding: 20px 10px; /* Reduz o padding no mobile */
+        font-size: 0.85rem;
+    }
+
+    #footer strong {
+        /* Garante que o nome da biblioteca não fique grudado nas bordas no mobile */
+        display: block; 
+        margin: 5px 0;
+    }
+}

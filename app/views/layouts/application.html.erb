@@ -2,12 +2,14 @@
 <html>
   <head>
     <title><%= content_for(:title) || "Blog" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= yield :head %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
@@ -23,6 +25,51 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <nav class="navbar" role="navigation">
+    <a href="#" class="navbar-logo">Biblioteca Municipal Ney Pontes</a>
+
+    <div class="navbar-toggler" aria-label="Abrir menu">
+        ☰
+    </div>
+
+    <ul class="navbar-links">
+        <li class="navbar-item">
+            <a href="#" class="navbar-link active">Início</a>
+        </li>
+        <li class="navbar-item">
+            <a href="#" class="navbar-link">Serviços</a>
+        </li>
+        <li class="navbar-item">
+            <a href="#" class="navbar-link">Sobre</a>
+        </li>
+        <li class="navbar-item">
+            <a href="#" class="navbar-link">Contato</a>
+        </li>
+    </ul>
+    </nav>
+
+
+    <div id="main">
+
+      <%= yield %>
+
+    </div>
+
+
+
+    </div>
+
+
+      <div id="footer">
+      &copy; <%= Date.today.year %>.
+      <strong>Biblioteca Municipal Ney Pontes.</strong>
+      Todos os direitos reservados.
+      </div>
+
+
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
